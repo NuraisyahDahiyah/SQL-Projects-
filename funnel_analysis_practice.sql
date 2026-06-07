@@ -153,6 +153,8 @@ FROM funnel_revenue;
 #	ACTION: set a strict CAC limit. 
 #	If we are paying more than $30-$40 to acquire those customers on social media ads (which convert poorly), we are likely loosing money on those specific  transactions made
 
+	-- fixing typo 
+
 
 
 

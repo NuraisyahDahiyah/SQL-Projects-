@@ -110,4 +110,60 @@ ALTER TABLE layoffs_staging2
 MODIFY COLUMN `date` DATE;
 
 -- 3.0 Null values or blank values 
+
+SELECT *
+FROM layoffs_staging2
+WHERE total_laid_off IS NULL
+AND percentage_laid_off IS NULL;
+
+SELECT *
+FROM layoffs_staging2
+WHERE industry IS NULL
+OR industry = '';
+
+SELECT *
+FROM layoffs_staging2 # Bally does not have another populated row where its not NULL
+WHERE company LIKE 'Bally%'; # trying to see company industry from null value rows
+
+SELECT t1.industry, t2.industry
+FROM layoffs_staging2 t1 
+JOIN layoffs_staging2 t2
+	ON t1.company = t2.company 
+    AND t1.location = t2.location
+WHERE (t1.industry IS NULL)
+AND t2.industry IS NOT NULL
+;
+
+UPDATE layoffs_staging2 # setting blank as NULL values to standardised
+SET industry = NULL
+WHERE industry = '';
+
+UPDATE layoffs_staging2 t1 
+JOIN layoffs_staging2 t2
+	ON t1.company = t2.company
+SET t1.industry = t2.industry 
+WHERE (t1.industry IS NULL)
+AND t2.industry IS NOT NULL
+;
+
+SELECT *
+FROM layoffs_staging2;
+    
 -- 4.0 Remove any columns 
+
+SELECT * 
+FROM layoffs_staging2
+WHERE total_laid_off IS NULL
+AND percentage_laid_off IS NULL;
+
+DELETE
+FROM layoffs_staging2
+WHERE total_laid_off IS NULL # deleted row where both columns are null as the data may not be very accurate for eda / useful
+AND percentage_laid_off IS NULL;
+
+SELECT *
+FROM layoffs_staging2;
+
+ALTER TABLE layoffs_staging2
+DROP COLUMN row_num;
+

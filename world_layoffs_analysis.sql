@@ -245,3 +245,5 @@ WHERE years IS NOT NULL
 SELECT *
 FROM Company_Year_Rank
 WHERE Ranking <=5 ; # year by year snapshot of top 5 company layoffs every year
+
+-- testing if repo is linked to email to show future commits

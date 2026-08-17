@@ -2,8 +2,7 @@
 
 This case study, inspired by [Lorenzo Rosa funnel analysis](https://www.youtube.com/watch?v=U-JlXWDqvco), uses SQL to analyse user behaviour across an e-commerce sales funnel, identifying conversion bottlenecks, channel performance, customer journey behaviour, and revenue opportunities.
 
-### Tech Stack
-`SQL` · `MySQL` · `Data Analysis` · `Funnel Analysis` · `Marketing Analytics` 
+**Database:** `MySQL`
 
 ## Business Problem
 
@@ -131,9 +130,11 @@ AOV and revenue-per-visitor provide useful benchmarks, but strong conversion doe
 
 </details>
 
-## SQL Techniques Used
+---
 
-`CTEs` · `CASE WHEN` · `COUNT(DISTINCT)` · `GROUP BY` · `Conditional Aggregration` · `TIMESTAMPDIFF` · `Revenue Analysis` · `Channel Segmentation`
+**SQL Techniques Used**
+
+`CTEs` · `CASE WHEN` · `COUNT(DISTINCT)` · `GROUP BY` · `Conditional Aggregration` · `TIMESTAMPDIFF` 
 
 
 

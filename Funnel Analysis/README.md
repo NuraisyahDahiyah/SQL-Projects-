@@ -16,16 +16,6 @@ Key questions:
 - How does funnel performance translate into revenue?
 - Where should the business prioritise optimisation efforts?
 
-## Analysis Overview
-
-| Analysis | Objective |
-|---|---|
-| Sales Funnel | Measure users progressing through each funnel stage |
-| Conversion | Identify major drop-off points |
-| Traffic Source | Compare channel volume and conversion efficiency |
-| Customer Journey | Analyse time taken to convert |
-| Revenue | Evaluate revenue and order performance |
-
 ## Data
 
 The analysis uses a `user_events` dataset containing customer interactions throughout the e-commerce journey. 
@@ -41,6 +31,16 @@ The analysis uses a `user_events` dataset containing customer interactions throu
 **Analysis Period:** 4 January 2026 - 3 February 2026
 
 ## Analysis 
+
+### Analysis Overview
+
+| Analysis | Objective |
+|---|---|
+| Sales Funnel | Measure users progressing through each funnel stage |
+| Conversion | Identify major drop-off points |
+| Traffic Source | Compare channel volume and conversion efficiency |
+| Customer Journey | Analyse time taken to convert |
+| Revenue | Evaluate revenue and order performance |
 
 ### 1. Sales Funnel
 

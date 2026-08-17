@@ -1,6 +1,6 @@
 # E-Commerce Sales Funnel Analysis
 
-This case study, inspired by [Lorenzo Rosa funnel analysis](https://www.youtube.com/watch?v=U-JlXWDqvco), uses SQL to analyse user behaviour across an e-commerce sales funnel, identifying conversion bottlenecks, channel performance, customer journey behaviour, and revenue opportunities.
+This project, inspired by [Lorenzo Rosa funnel analysis](https://www.youtube.com/watch?v=U-JlXWDqvco), uses SQL to analyse user behaviour across an e-commerce sales funnel, identifying conversion bottlenecks, channel performance, customer journey behaviour, and revenue opportunities.
 
 **Database:** `MySQL`
 

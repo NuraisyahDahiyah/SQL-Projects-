@@ -37,7 +37,7 @@ FROM menu_items
 GROUP BY category; ## American = $10.07
 				   ## Asian = $13.48
 				   ## Mexican = $11.80
-				   ## Italian = $11.80
+				   ## Italian = $16.75
                    
 -- Objective 2. Explore and analyse Order Details table
 
@@ -96,21 +96,8 @@ GROUP BY item_name, category
 ORDER BY num_purchases DESC; ## most ordered: Hamburger (622 orders)
 							 ## least ordered: Chicken Tacos (123 orders)
 
-###### to check if this calculated right total within those peak hours                             
-SELECT 
-    mi.item_name,
-    mi.category,
-    COUNT(od.order_details_id) AS num_orders
-FROM order_details od
-JOIN menu_items mi
-    ON od.item_id = mi.menu_item_id
-WHERE HOUR(od.order_time) IN (12, 13, 17, 18, 19)
-GROUP BY mi.item_name, mi.category
-ORDER BY num_orders DESC;
-####
-
 # which categories and items generate the most revenue?
-
+## category
 SELECT 
 	category,
     COUNT(order_details_id) AS total_orders,
@@ -122,7 +109,8 @@ LEFT JOIN menu_items mi
 GROUP BY category
 ORDER BY total_revenue DESC;  ## Italian food leads in terms of total revenue and avg price per item despite Asian food having the most orders
 							  ## American food ranks the lowest across total orders, total revenue and avg price per item
-                              
+
+## item
 SELECT item_name,
 	category, 
     COUNT(order_details_id) AS num_orders,
@@ -147,8 +135,8 @@ FROM (
     FROM order_details od
     LEFT JOIN menu_items mi
         ON od.item_id = mi.menu_item_id
-    GROUP BY order_id ## calculates the total for each orderID
-) AS order_summary;	  ## min or
+    GROUP BY order_id ## min order value is $5, max $192.15, avg order is $29.80
+) AS order_summary;	  
 
 SELECT 
 	MIN(num_items) AS min_items,
@@ -185,7 +173,7 @@ FROM order_details od LEFT JOIN menu_items mi
 	ON od.item_id = mi.menu_item_id
 GROUP BY order_id
 ORDER BY total_spend DESC
-LIMIT 5;  ## showcasess the top 5 orders and they're total spend
+LIMIT 5;  ## showcases the top 5 orders and they're total spend
 
 SELECT category, COUNT(item_id) AS num_items
 FROM order_details od LEFT JOIN menu_items mi
@@ -209,31 +197,17 @@ GROUP BY HOUR(order_time)
 ORDER BY total_orders DESC; ## Lunch and dinner hours are peak ordering hours (12PM, 5PM, 6PM, 1PM, 7PM)
 
 SELECT 
-	MIN(num_items) AS min_items,
-    MAX(num_items) AS max_items,
-    ROUND(AVG(num_items), 2) AS avg_items_per_order
-FROM (
-	SELECT
-		order_id, 
-		COUNT(item_id) AS num_items
-	FROM order_details od
-    LEFT JOIN menu_items mi
-        ON od.item_id = mi.menu_item_id
-	WHERE od.item_id IS NOT NULL
-	GROUP BY order_id
-) AS order_summary;	
-
-SELECT 
     CASE 
+        WHEN HOUR(order_time) BETWEEN 9 AND 10 THEN 'Breakfast'
         WHEN HOUR(order_time) BETWEEN 11 AND 14 THEN 'Lunch'
-        WHEN HOUR(order_time) BETWEEN 15 AND 17 THEN 'Afternoon'
-        WHEN HOUR(order_time) BETWEEN 18 AND 21 THEN 'Dinner'
-        ELSE 'Other'
+        WHEN HOUR(order_time) BETWEEN 15 AND 16 THEN 'Afternoon'
+        WHEN HOUR(order_time) BETWEEN 17 AND 21 THEN 'Dinner'
+        ELSE 'Supper'
     END AS time_period,
     COUNT(DISTINCT order_id) AS total_orders
 FROM order_details
 GROUP BY time_period
-ORDER BY total_orders DESC; ## grouping the time periods together to make it easier to view 
+ORDER BY total_orders DESC; ## dinner has the higher total orders of 2419 with breakfast only having 2 orders
 
 SELECT 
     HOUR(order_time) AS order_hour,
@@ -245,15 +219,31 @@ JOIN menu_items mi
 GROUP BY HOUR(order_time), category
 ORDER BY order_hour, num_items_ordered DESC; ## Asian food dominates as most ordered every hour 
 
+# to check popular items during peak hours                          
+SELECT 
+    mi.item_name,
+    mi.category,
+    COUNT(od.order_details_id) AS num_orders
+FROM order_details od
+JOIN menu_items mi
+    ON od.item_id = mi.menu_item_id
+WHERE HOUR(od.order_time) IN (12, 13, 17, 18, 19)
+GROUP BY mi.item_name, mi.category
+ORDER BY num_orders DESC; ## edamame (356 orders), hamburger (353 orders), cheesburger (341 orders), tofu pad thai (323 orders), korean beef bowl (310 orders)
 
--- CONCLUSIONS --
-# popularity != revenue
-# there is potential high value customer preference for Italian > cross selling when customers order italian dishes , limit dont know if same/diff customers
-# dont immediately remove the most popular dishes > review low performing items > promotional pricing, bundling, feedback, reposition on menu first
-# american food is the biggest area for investigation > weakest overall performance but hamburger is the most popular item and may be time-dependent > brunch options
-# peak periods gives operational opportunity > ensure sufficient staffing, maitain availability of high-demand items
-# average order is around 3 items > can increase revenue by having people add one more item > bundles, add-ons
-# Asian dishes drive volume, Italian dishes drive revenue, and American dishes underperform overall but show some morning demand
-# customers typically purchase around three items per order and demand peaks around lunch and dinner
 
+-- ============================================================
+-- CONCLUSIONS AND BUSINESS INSIGHTS
+-- ============================================================
 
+-- Asian cuisine drives the highest order volume despite having the smallest menu selection, showing strong customer demand
+-- Italian cuisine generates the highest revenue, supported by its higher average menu price ($16.75) and presence in high-value orders
+-- Asian and Italian dishes serve different roles: Asian drives volume, while Italian drives revenue
+-- American cuisine performs weakest at category level, but demand is concentrated in bestsellers such as Hamburger and Cheeseburger
+-- Mexican cuisine shows relatively weak demand despite having one of the largest menu selections and should be investigated further
+-- Item popularity does not always translate into the highest revenue, both purchase volume and item price influence revenue performance.
+-- Customers purchase around 3 items per order, with an average order value of approximately $29.80.
+-- The frequent presence of Italian dishes in high-value orders suggests they contribute strongly to higher-value sales.
+-- Demand peaks during lunch and dinner, especially at 12–1 PM and 5–7 PM.
+-- Edamame, Hamburger, Cheeseburger, Tofu Pad Thai and Korean Beef Bowl are the most important dishes to prepare for peak periods.
+-- The cafe should retain bestsellers, review weaker items individually, and test pricing, bundles or promotions before removing dishes.

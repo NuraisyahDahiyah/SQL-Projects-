@@ -72,9 +72,11 @@ Key analyses include:
 - Most and least expensive dishes
 - Most and least expensive Italian dishes
 
+Output: 
+
 <img width="200" alt="image" src="https://github.com/user-attachments/assets/80111e6b-ac10-43fc-9b0f-3c1cdd1e3daa" />
 
-Example query:
+Query:
 
 ```sql
 SELECT 
@@ -99,7 +101,7 @@ Key analyses include:
 - Largest orders by number of items
 - Number of orders containing more than 12 items
 
-Example query:
+Query:
 
 ```sql
 SELECT 
@@ -130,6 +132,8 @@ ORDER BY num_purchases DESC;
 
 **Key Finding:** Hamburger was the most ordered menu item with 622 purchases, while Chicken Tacos was the least ordered with 123 purchases.
 
+Output: 
+
 <img width="200" alt="image" src="https://github.com/user-attachments/assets/fa62b4c1-1328-4adb-88ef-0b2345023752" />
 
 ---
@@ -150,6 +154,7 @@ LEFT JOIN menu_items mi
 GROUP BY category
 ORDER BY total_revenue DESC;
 ```
+Output: 
 
 <img width="250" alt="image" src="https://github.com/user-attachments/assets/8b45739c-2bce-447c-b92d-26b9b7c4ae7e" />
 
@@ -157,7 +162,7 @@ ORDER BY total_revenue DESC;
 
 ---
 
-### 5. Order Value and Purchasing Behaviour
+### 5. Order Value
 
 Further analysis was done on the orders to understand typical customer spending and order size.
 
@@ -185,23 +190,109 @@ FROM (
 ) AS order_summary;
 ```
 
+Output: 
+
 <img width="250" alt="image" src="https://github.com/user-attachments/assets/23a94061-8e21-43a9-a474-80c2dc96b7ab" />
 
+**Key Finding:** Customers spend approximately $29.80 per order on average and purchase around 3 items per order. The highest-value order was $192.15
+
+```
+Note: The dataset does not contain a customer identifier, so high-value orders cannot be attributed to individual customers.
+```
 ---
 
-### 6.
+### 6. High-Value Orders
+
+The highest-spending orders were identified and their category composition was analysed to understand what types of dishes are associated with larger orders.
+
+```sql
+SELECT category, COUNT(item_id) AS num_items
+FROM order_details od LEFT JOIN menu_items mi
+	ON od.item_id = mi.menu_item_id
+WHERE order_id IN (440, 2075, 1957, 330, 2675)
+GROUP BY category;
+```
+
+The category composition of the top five orders was then examined as shown in the output below:
+
+<img width="268" alt="image" src="https://github.com/user-attachments/assets/eacfd1d7-0fd3-4c96-b4bf-d530aadc0564" />
+
+**Key Finding:** Italian dishes appear frequently within the highest-value orders, supporting the finding that Italian cuisine contributes strongly to higher-value sales.
+
+`Note: The dataset does not contain a customer identifier, so high-value orders cannot be attributed to individual customers.`
 
 ---
 
-### 7. 
+### 7. Peak Ordering Periods
+
+Order times were analysed to identify when customer demand is highest.
+
+```sql
+SELECT 
+    HOUR(order_time) AS order_hour,
+    COUNT(DISTINCT order_id) AS total_orders
+FROM order_details
+GROUP BY HOUR(order_time)
+ORDER BY total_orders DESC;
+```
+
+Output: 
+
+<img width="220" alt="image" src="https://github.com/user-attachments/assets/2e947093-885f-4ee6-b016-aed117aff124" />
+
+The analysis shows that the busiest ordering hours are: `12 PM → 1 PM → 5 PM → 6 PM → 7 PM`
+These periods represent the café's key lunch and dinner demand windows.
 
 ---
 
-### 8.
+### 8. Cuisine Category Popularity by Hour 
+
+Category ordering behaviour was analysed across different hours to identify customer changes in preferences throughout the day.
+
+```sql
+SELECT 
+    HOUR(order_time) AS order_hour,
+    category,
+    COUNT(order_details_id) AS num_items_ordered
+FROM order_details od
+JOIN menu_items mi
+    ON od.item_id = mi.menu_item_id
+GROUP BY HOUR(order_time), category
+ORDER BY order_hour, num_items_ordered DESC;
+```
+
+**Key Finding:** Asian cuisine consistently records strong ordering volume across the analysed hours, reinforcing its position as the café's primary volume driver.
 
 ---
 
-### 9. 
+### 9. Popular Items during Peak Hours 
+
+The most frequently ordered dishes during the identified peak periods were analysed.
+
+```sql
+SELECT 
+    mi.item_name,
+    mi.category,
+    COUNT(od.order_details_id) AS num_orders
+FROM order_details od
+JOIN menu_items mi
+    ON od.item_id = mi.menu_item_id
+WHERE HOUR(od.order_time) IN (12, 13, 17, 18, 19)
+GROUP BY mi.item_name, mi.category
+ORDER BY num_orders DESC;
+```
+
+Top peak-period items:
+
+|Rank|Item|Orders|
+|---|---|---|
+| 1 | Edamame | 356 |
+| 2 | Hamburger | 353 |
+| 3 | Cheeseburger | 341 |
+| 4 | Tofu Pad Thai | 323 |
+| 5 | Korean Beef Bowl | 310 |
+
+These items should be prioritised for inventory availability and preparation during peak periods.
 
 ---
 
@@ -331,6 +422,7 @@ The analysis shows that customer demand and menu pricing work together to influe
 ---
 
 **SQL Techniques Used**
+
 `JOIN` · `LEFT JOIN` · `GROUP BY` · `HAVING` · `CASE WHEN` · `HOUR()` · Subqueries · Aggregate Functions
 
 

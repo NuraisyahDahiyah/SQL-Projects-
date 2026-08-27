@@ -2,7 +2,7 @@
 
 This project uses SQL to analyse restaurant menu and order data to understand menu performance, customer purchasing behaviour, revenue drivers and ordering patterns.
 
-The first two objectives follow the guide case study led by [Alice Zhao](https://www.youtube.com/watch?v=JaUKDbCXMX4&t=4s).
+The first two objectives follow the guided project led by [Alice Zhao](https://www.youtube.com/watch?v=JaUKDbCXMX4&t=4s).
 
 **Database:** `SQL`
 

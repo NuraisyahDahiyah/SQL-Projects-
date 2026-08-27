@@ -215,7 +215,7 @@ GROUP BY category;
 
 The category composition of the top five orders was then examined as shown in the output below:
 
-<img width="268" alt="image" src="https://github.com/user-attachments/assets/eacfd1d7-0fd3-4c96-b4bf-d530aadc0564" />
+<img width="200" alt="image" src="https://github.com/user-attachments/assets/eacfd1d7-0fd3-4c96-b4bf-d530aadc0564" />
 
 **Key Finding:** Italian dishes appear frequently within the highest-value orders, supporting the finding that Italian cuisine contributes strongly to higher-value sales.
 

@@ -298,124 +298,58 @@ These items should be prioritised for inventory availability and preparation dur
 
 ## Key Insights and Recommendation 
 
-<details> 
-    <summary> 
-        <strong> 01 — Asian cuisine drives order volume </strong>
-    </summary>
+<details>
+  <summary>
+    <strong>01 — Asian cuisine drives customer demand</strong>
+  </summary>
 
-Asian cuisine generates the highest order volume despite having the smallest menu selection with only 6 items.
+Asian cuisine has the highest order volume despite having the smallest menu selection, making it the café's strongest volume driver.
 
-**Recommendation:** Prioritise inventory availability and preparation of popular Asian dishes during peak periods.
-
-</details>
-
-<details> 
-    <summary> 
-        <strong> 02 — Italian cuisine drives revenue </strong> 
-    </summary>
-
-Italian generates the highest total revenue despite not having the highest order volume. Its higher average menu price of $16.75 contributes to its revenue performance.
-
-**Recommendation:** Maintain strong-performing Italian dishes and explore complementary add-ons or bundles to maximise their revenue potential.
-
-</details>
-
-<details> 
-    <summary> 
-        <strong> 03 — Popularity does not equal revenue </strong> 
-    </summary>
-
-Asian dishes drive the highest order volume, while Italian dishes generate the highest revenue, showing that purchase volume and pricing both influence category performance.
-
-**Recommendation:** Evaluate menu performance using both sales volume and revenue rather than relying on popularity alone.
-
-</details>
-
-<details> 
-    <summary> 
-        <strong> 04 — American demand is concentrated around a few bestsellers </strong> 
-    </summary>
-
-American cuisine has the weakest category-level performance, but Hamburger, Cheeseburger and French Fries are among the café's most popular individual items.
-
-**Recommendation:** Retain strong American bestsellers while reviewing weaker items individually before making menu changes.
-
-</details>
-
-<details> 
-    <summary> 
-        <strong> 05 — Mexican cuisine requires further investigation </strong> 
-    </summary>
-
-Mexican cuisine has 9 menu items but relatively weak overall demand, with Chicken Tacos among the lowest-performing dishes.
-
-**Recommendation:** Review pricing, menu positioning, promotions and customer feedback before considering removal of weaker dishes.
-
-</details>
-
-<details> 
-    <summary> 
-        <strong> 06 — Customers typically purchase around three items </strong> 
-    </summary>
-
-The average order contains approximately 3 items and has an average value of $29.80.
-
-**Recommendation:** Test bundles, add-ons and complementary product recommendations to encourage customers to increase their basket size.
+**Recommendation:** Maintain sufficient inventory and preparation capacity for popular Asian dishes, particularly during peak periods.
 
 </details>
 
 <details>
-    <summary> 
-        <strong> 07 — High-value orders show strong Italian demand </strong> 
-    </summary>
+  <summary>
+    <strong>02 — Italian cuisine drives revenue</strong>
+  </summary>
 
-Italian dishes appear frequently within the highest-spending orders, suggesting they contribute strongly to higher-value sales.
+Italian cuisine generates the highest total revenue despite not having the highest order volume. Its higher average menu price of $16.75 and strong presence in high-value orders contribute to its revenue performance.
 
-**Recommendation:** Explore cross-selling opportunities around popular Italian dishes while maintaining their current pricing.
-
-</details>
-
-<details> 
-    <summary> 
-        <strong> 08 — Demand peaks during lunch and dinner </strong> 
-    </summary>
-
-The busiest ordering hours are 12 PM, 1 PM, 5 PM, 6 PM and 7 PM.
-
-**Recommendation:** Optimise staffing, preparation and inventory around these peak periods.
+**Recommendation:** Maintain strong-performing Italian dishes and explore bundles or complementary add-ons to maximise their revenue potential.
 
 </details>
 
-<details> 
-    <summary> 
-        <strong> 09 — Peak-period demand is concentrated around key dishes </strong> 
-    </summary>
+<details>
+  <summary>
+    <strong>03 — American and Mexican cuisines require different strategies</strong>
+  </summary>
 
-Edamame, Hamburger, Cheeseburger, Tofu Pad Thai and Korean Beef Bowl are among the most ordered items during peak hours.
+American cuisine has weak overall category performance but contains strong individual bestsellers such as Hamburger and Cheeseburger. Mexican cuisine shows weaker demand despite having one of the largest menu selections.
 
-**Recommendation:** Ensure sufficient ingredients and kitchen capacity for these high-demand dishes during peak periods.
-
-</details>
-
-<details> 
-    <summary> 
-        <strong> 10 — Menu optimisation should focus on individual items </strong> 
-    </summary>
-
-Category-level performance can hide strong and weak individual dishes, as demonstrated by the strong performance of several American items despite weak overall category results.
-
-**Recommendation:** Evaluate individual menu items before removing or restructuring an entire category.
+**Recommendation:** Retain successful American bestsellers while reviewing weaker items individually. Investigate Mexican dishes through pricing, menu positioning and customer feedback before making major menu changes.
 
 </details>
 
-<details> 
-    <summary> 
-        <strong> 11 — Menu performance reflects both demand and pricing </strong> 
-    </summary>
+<details>
+  <summary>
+    <strong>04 — Customers typically purchase around three items per order</strong>
+  </summary>
 
-The analysis shows that customer demand and menu pricing work together to influence revenue. Asian drives volume, while higher-priced Italian dishes drive revenue.
+The average order contains approximately 3 items and has an average value of $29.80, suggesting an opportunity to increase basket size.
 
-**Recommendation:** Use both order volume and revenue when evaluating menu performance and making future menu decisions.
+**Recommendation:** Test bundles, add-ons and complementary item recommendations to encourage customers to purchase additional items.
+
+</details>
+
+<details>
+  <summary>
+    <strong>05 —Demand is high around lunch and dinner</strong>
+  </summary>
+
+Ordering activity peaks at 12–1 PM and 5–7 PM, with dishes such as Edamame, Hamburger, Cheeseburger, Tofu Pad Thai and Korean Beef Bowl among the most popular during these periods.
+
+**Recommendation:** Align staffing, inventory and food preparation with these peak periods to maintain availability and service efficiency.
 
 </details>
 
